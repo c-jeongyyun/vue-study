@@ -5,65 +5,79 @@
     <title>Vue Mastery</title>
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
-   
+
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
- <!-- Import Vue.js -->  
-    <body>
-      <div id="app">
-    
-        <div class="cart">
-          Cart({{cart}})
-        </div>
+  </head>
+  <!-- Import Vue.js -->
+  <body>
+    <div id="app">
+      <div class="cart">Cart({{cart}})</div>
 
-        <div class="product-display">
-          <div class="product-container">
-            <div class="product-image">
-              <img :src="image" alt="product-image">
-            </div>
+      <div class="product-display">
+        <div class="product-container">
+          <div class="product-image">
+            <img
+              :src="image"
+              :class="{'out-of-stock-img' : inventory===0}"
+              alt="product-image"
+            />
+          </div>
 
-            <div class="product-info">
-              <h1>{{product}}</h1>
-              <p>
-                <span v-if="inventory > 10">재고 있음</span>
-                <span v-else-if="inventory < 10 && inventory > 0">매진 임박!</span>
-                <span v-else>매진</span>
-              </p>
-              <p v-show="!onSale">세일 중</p>
-      
-              <h4>세부정보</h4>
-              <ul>
-                <li v-for="detail in details" :key="detail">{{detail}}</li>
-              </ul>
-      
-              <h4>색상</h4>
-              <ul>
-                <li v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{variant.color}}</li>
-              </ul>
-              
-              <h4>사이즈</h4>
-              <ul>
-                <li v-for="size in sizes">{{size}}</li>
-              </ul>
-              <button v-on:click="cart+=1">장바구니에 담기</button>
-              <button v-on:click="removeFromCart">장바구니에서 빼기</button>
+          <div class="product-info">
+            <h1>{{product}}</h1>
+            <p>
+              <span v-if="inventory > 10">재고 있음</span>
+              <span v-else-if="inventory < 10 && inventory > 0"
+                >매진 임박!</span
+              >
+              <span v-else>매진</span>
+            </p>
+            <p v-show="!onSale">세일 중</p>
 
+            <h4>세부정보</h4>
+            <ul>
+              <li v-for="detail in details" :key="detail">{{detail}}</li>
+            </ul>
+
+            <h4>색상</h4>
+            <ul>
+              <li
+                class="color-circle"
+                v-for="variant in variants"
+                :style="{backgroundColor: variant.color}"
+                :key="variant.id"
+                @mouseover="updateImage(variant.image)"
+              />
+            </ul>
+
+            <h4>사이즈</h4>
+            <ul>
+              <li v-for="size in sizes">{{size}}</li>
+            </ul>
+            <div class="button-container">
+              <button
+                class="button"
+                v-on:click="cart+=1"
+                :class="{disabledButton: inventory===0 }"
+              >
+                장바구니에 담기
+              </button>
+              <button v-on:click="removeFromCart" class="button">
+                장바구니에서 빼기
+              </button>
             </div>
           </div>
         </div>
-        <a :href="githubUrl">go to my github</a>
-       
-      
-
-        
       </div>
+      <a :href="githubUrl">go to my github</a>
+    </div>
 
-      <!-- Import App -->
-      <script src="./main.js"></script>
+    <!-- Import App -->
+    <script src="./main.js"></script>
 
-      <!-- Mount App -->
-      <script>
-        const mountedApp = app.mount("#app");
-      </script>
+    <!-- Mount App -->
+    <script>
+      const mountedApp = app.mount("#app");
+    </script>
   </body>
 </html>
-
