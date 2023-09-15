@@ -12,16 +12,22 @@ const app = Vue.createApp({
                 "울 10%", 
             ],
             variants:[
-                {id:"124", color:"green"},
-                {id:"125", color:"blue"}
+                {id:"124", color:"green", image:"./assets/images/socks_green.jpg" },
+                {id:"125", color:"blue", image:"./assets/images/socks_blue.jpg" }
             ],
             sizes:[
                 "S","M","L"
             ],
             cart:0,
-
-        
-        
         }
-    }
+       
+    }, 
+    methods: {
+        removeFromCart(){
+            this.cart-=1;
+        },
+        updateImage(variantImage){
+            this.image = variantImage;
+        }
+    },
 })

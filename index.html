@@ -37,13 +37,16 @@
       
               <h4>색상</h4>
               <ul>
-                <li v-for="variant in variants" :key="variant.id">{{variant.color}}</li>
+                <li v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{variant.color}}</li>
               </ul>
               
               <h4>사이즈</h4>
               <ul>
                 <li v-for="size in sizes">{{size}}</li>
               </ul>
+              <button v-on:click="cart+=1">장바구니에 담기</button>
+              <button v-on:click="removeFromCart">장바구니에서 빼기</button>
+
             </div>
           </div>
         </div>
