@@ -24,12 +24,12 @@
           </div>
 
           <div class="product-info">
-            <h1>{{product}}</h1>
+            <h1>{{title}}</h1>
             <p>
               <span v-if="inventory > 10">재고 있음</span>
-              <span v-else-if="inventory < 10 && inventory > 0"
-                >매진 임박!</span
-              >
+              <span v-else-if="inventory < 10 && inventory > 0">
+                매진 임박!
+              </span>
               <span v-else>매진</span>
             </p>
             <p v-show="!onSale">세일 중</p>
@@ -43,10 +43,10 @@
             <ul>
               <li
                 class="color-circle"
-                v-for="variant in variants"
+                v-for="(variant, idx) in variants"
                 :style="{backgroundColor: variant.color}"
                 :key="variant.id"
-                @mouseover="updateImage(variant.image)"
+                @mouseover="updateVariant(idx)"
               />
             </ul>
 
