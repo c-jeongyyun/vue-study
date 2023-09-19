@@ -373,7 +373,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.17.15":
+"@types/node@npm:18":
   version: 18.17.17
   resolution: "@types/node@npm:18.17.17"
   checksum: ff28f347c77723780836f9bb2ffa6db0cd72490bfd7604397c03db31db34f1f2899e82f0aaf3e825efeb09c15bd94d076ea9aca19a1407e1b56cb4603318936c
@@ -3986,7 +3986,7 @@ __metadata:
   dependencies:
     "@rushstack/eslint-patch": ^1.3.3
     "@tsconfig/node18": ^18.2.2
-    "@types/node": ^18.17.15
+    "@types/node": 18
     "@vitejs/plugin-vue": ^4.3.4
     "@vue/eslint-config-prettier": ^8.0.0
     "@vue/eslint-config-typescript": ^12.0.0
