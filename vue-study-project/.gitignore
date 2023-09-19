@@ -26,3 +26,14 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+
+### yarn non-zero-Install###
+#### 참고 :https://www.zigae.com/yarn2/
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
