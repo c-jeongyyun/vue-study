@@ -1,12 +1,7 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
-  let a:string|number=ref("");
-
-  const props= defineProps<{
-    msg:string,
-  }>();
-
-
+defineProps<{
+  msg: string
+}>()
 </script>
 
 <template>
