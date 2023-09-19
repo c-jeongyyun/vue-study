@@ -11,69 +11,24 @@
   <!-- Import Vue.js -->
   <body>
     <div id="app">
-      <div class="cart">Cart({{cart}})</div>
+      <div class="cart">Cart({{cart.length}})</div>
 
-      <div class="product-display">
-        <div class="product-container">
-          <div class="product-image">
-            <img
-              :src="image"
-              :class="{'out-of-stock-img' : inventory===0}"
-              alt="product-image"
-            />
-          </div>
-
-          <div class="product-info">
-            <h1>{{title}}</h1>
-            <p>
-              <span v-if="inventory > 10">재고 있음</span>
-              <span v-else-if="inventory < 10 && inventory > 0">
-                매진 임박!
-              </span>
-              <span v-else>매진</span>
-            </p>
-            <p v-show="!onSale">세일 중</p>
-
-            <h4>세부정보</h4>
-            <ul>
-              <li v-for="detail in details" :key="detail">{{detail}}</li>
-            </ul>
-
-            <h4>색상</h4>
-            <ul>
-              <li
-                class="color-circle"
-                v-for="(variant, idx) in variants"
-                :style="{backgroundColor: variant.color}"
-                :key="variant.id"
-                @mouseover="updateVariant(idx)"
-              />
-            </ul>
-
-            <h4>사이즈</h4>
-            <ul>
-              <li v-for="size in sizes">{{size}}</li>
-            </ul>
-            <div class="button-container">
-              <button
-                class="button"
-                v-on:click="cart+=1"
-                :class="{disabledButton: inventory===0 }"
-              >
-                장바구니에 담기
-              </button>
-              <button v-on:click="removeFromCart" class="button">
-                장바구니에서 빼기
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <product-display
+        :premium="premium"
+        @add-to-cart="updateCart"
+        @remove-from-cart="removeFromCart"
+      ></product-display>
+      <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+      <review-form @add-review="addReview"></review-form>
       <a :href="githubUrl">go to my github</a>
     </div>
 
     <!-- Import App -->
     <script src="./main.js"></script>
+    <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ProductDetails.js"></script>
+    <script src="./components/ReviewForm.js"></script>
+    <script src="./components/ReviewList.js"></script>
 
     <!-- Mount App -->
     <script>
